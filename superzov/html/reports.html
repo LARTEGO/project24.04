@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperZov HR - Отчеты</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/reports.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Управление проектами УТТ ДиСТ</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Кадровый учет</a></li>
+                    <li><a href="overtime.html">Сверхурочная работа</a></li>
+                    <li><a href="reports.html" class="active">Отчеты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="employee-reports">Отчет по сотрудникам</button>
+            <button class="tab-btn" data-tab="department-reports">Отчет по подразделениям</button>
+            <button class="tab-btn" data-tab="requests-reports">Заявления от сотрудников</button>
+        </div>
+
+        <div class="filter-panel">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="report-year">Год:</label>
+                    <select id="report-year">
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="report-period">Период:</label>
+                    <select id="report-period">
+                        <option value="january">Январь</option>
+                        <option value="february">Февраль</option>
+                        <option value="q1">I квартал</option>
+                        <option value="half1">I полугодие</option>
+                        <option value="year">Год</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn secondary" id="apply-filter">Применить</button>
+                </div>
+            </div>
+            <div class="search-group">
+                <input type="text" id="report-search" placeholder="Поиск...">
+                <button class="btn search-btn">Найти</button>
+            </div>
+        </div>
+
+        <div class="tab-content active" id="employee-reports">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Отчет по сотрудникам</h2>
+                    <div class="form-group">
+                        <label for="department-filter">Подразделение:</label>
+                        <select id="department-filter">
+                            <option value="all">Все подразделения</option>
+                            <option value="dept1">Подразделение 1</option>
+                            <option value="dept2">Подразделение 2</option>
+                            <option value="dept3">Подразделение 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Таб. №</th>
+                                <th>ФИР ИТОГ</th>
+                                <th>Сверхурочная работа</th>
+                                <th>Отпуск</th>
+                                <th>Больничный лист</th>
+                                <th>Отпуск а.ч.</th>
+                                <th>Итого фонд а.ч.</th>
+                                <th>Обоснование</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employee-report-table-body">
+                            <!-- Данные будут добавлены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="export-employee-report">Экспорт отчета</button>
+                    <button class="btn" id="exit-employee-report">Выход</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="department-reports">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Отчет по подразделениям</h2>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Подразделение</th>
+                                <th>Таб. №</th>
+                                <th>ФИР ИТОГ</th>
+                                <th>Сверхурочная работа</th>
+                                <th>Отпуск</th>
+                                <th>Больничный лист</th>
+                                <th>Отпуск а.ч.</th>
+                                <th>Итого фонд а.ч.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="department-report-table-body">
+                            <!-- Данные будут добавлены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="export-department-report">Экспорт отчета</button>
+                    <button class="btn" id="exit-department-report">Выход</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="requests-reports">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Заявления от сотрудников</h2>
+                    <div class="form-group">
+                        <label for="request-date">Выберите дату:</label>
+                        <input type="date" id="request-date">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Табельный номер</th>
+                                <th>Дата</th>
+                                <th>Вид заявления</th>
+                                <th>Тип компенсации</th>
+                                <th>Заявленное время</th>
+                                <th>Обоснование</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requests-table-body">
+                            <!-- Данные будут добавлены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="export-requests">Экспорт списка</button>
+                    <button class="btn" id="exit-requests">Выход</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SuperZov HR. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/reports.js"></script>
+</body>
+</html>

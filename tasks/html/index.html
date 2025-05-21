@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты | SuperZov</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="nav-item">
+                    <a href="../../nav.html" class="nav-link-home">На главную</a>
+                </div>
+                <nav class="nav">
+                    <div class="nav-item">
+                        <a href="index.html" class="nav-link active">Проекты</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="task.html" class="nav-link">Задачи</a>
+                    </div>
+                    
+                
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link" id="userDropdown">
+                            <i class="fas fa-user-circle"></i>
+                        </a>
+                        <div class="dropdown-menu" id="userMenu">
+                            <a href="#" class="dropdown-item">Профиль</a>
+                            <a href="#" class="dropdown-item">Настройки</a>
+                            <a href="#" class="dropdown-item">Выйти</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="card-title">Проекты</h1>
+                <button class="btn" id="createProjectBtn">
+                    <i class="fas fa-plus mr-2"></i> Новый проект
+                </button>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="search-box mb-3">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Поиск проектов..." id="searchInput">
+                    </div>
+
+                    <div class="project-filters">
+                        <div class="filter-item active" data-filter="all">Все</div>
+                        <div class="filter-item" data-filter="active">Активные</div>
+                        <div class="filter-item" data-filter="completed">Завершенные</div>
+                        <div class="filter-item" data-filter="on-hold">На паузе</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-list" id="projectList">
+                <!-- Проекты будут добавлены через JavaScript -->
+            </div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3 class="empty-state-title">Нет проектов</h3>
+                <p class="empty-state-description">Создайте свой первый проект, чтобы начать работу.</p>
+                <button class="btn" id="emptyStateBtn">
+                    <i class="fas fa-plus mr-2"></i> Создать проект
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно создания проекта -->
+    <div class="modal" id="createProjectModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title">Новый проект</h3>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createProjectForm">
+                    <div class="form-group">
+                        <label for="projectName" class="form-label">Название проекта</label>
+                        <input type="text" id="projectName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDescription" class="form-label">Описание</label>
+                        <textarea id="projectDescription" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectStatus" class="form-label">Статус</label>
+                        <select id="projectStatus" class="form-control">
+                            <option value="active">Активный</option>
+                            <option value="on-hold">На паузе</option>
+                            <option value="completed">Завершен</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectPriority" class="form-label">Приоритет</label>
+                        <select id="projectPriority" class="form-control">
+                            <option value="low">Низкий</option>
+                            <option value="medium">Средний</option>
+                            <option value="high">Высокий</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDeadline" class="form-label">Срок выполнения</label>
+                        <input type="date" id="projectDeadline" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelProjectBtn">Отмена</button>
+                <button class="btn" id="saveProjectBtn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperZov HR - Главная</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Управление проектами УТТ ДиСТ</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Кадровый учет</a></li>
+                    <li><a href="overtime.html">Сверхурочная работа</a></li>
+                    <li><a href="reports.html">Отчеты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="employee-list">Список сотрудников</button>
+            <button class="tab-btn" data-tab="timesheet">Табельный учет</button>
+            <button class="tab-btn" data-tab="vacation">График отпусков</button>
+            <button class="tab-btn" data-tab="sick-leave">Больничный лист</button>
+            <button class="tab-btn" data-tab="statistics">Статистика</button>
+        </div>
+
+        <div class="search-panel">
+            <div class="filter-group">
+                <label for="year">Год:</label>
+                <select id="year">
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="period">Период:</label>
+                <select id="period">
+                    <option value="january">Январь</option>
+                    <option value="february">Февраль</option>
+                    <option value="march">Март</option>
+                    <option value="april">Апрель</option>
+                    <option value="may">Май</option>
+                    <option value="june">Июнь</option>
+                    <option value="july">Июль</option>
+                    <option value="august">Август</option>
+                    <option value="september">Сентябрь</option>
+                    <option value="october">Октябрь</option>
+                    <option value="november">Ноябрь</option>
+                    <option value="december">Декабрь</option>
+                </select>
+            </div>
+            <div class="search-group">
+                <input type="text" id="search" placeholder="Поиск...">
+                <button class="search-btn">Найти</button>
+            </div>
+        </div>
+
+        <div class="tab-content active" id="employee-list">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Список сотрудников</h2>
+                    <button class="btn primary" id="add-employee">Добавить сотрудника</button>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Таб. №</th>
+                                <th>Должность</th>
+                                <th>Подразделение</th>
+                                <th>Шифр подразделения</th>
+                                <th>График работы</th>
+                                <th>Статус</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employees-table-body">
+                            <!-- Данные будут добавлены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="export-list">Сформировать отчет</button>
+                    <button class="btn primary" id="add-multiple">Добавить записи</button>
+                    <button class="btn" id="exit">Выход</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="timesheet">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Табельный учет</h2>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Таб. №</th>
+                                <th>Дата начала отпуска</th>
+                                <th>Дата выхода на работу</th>
+                                <th>Количество дней</th>
+                                <th>Дополнительные дни</th>
+                                <th>№ документа</th>
+                                <th>Комментарий</th>
+                            </tr>
+                        </thead>
+                        <tbody id="timesheet-table-body">
+                            <!-- Данные будут добавлены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="edit-timesheet">Внести изменения</button>
+                    <button class="btn primary" id="save-timesheet">Сохранить</button>
+                    <button class="btn" id="exit-timesheet">Выход</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="vacation">
+            <!-- Содержимое для вкладки "График отпусков" -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>График отпусков</h2>
+                </div>
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="employee-number">Введите табельный номер сотрудника:</label>
+                        <div class="input-with-button">
+                            <input type="text" id="employee-number">
+                            <button class="btn secondary">Обновить</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="employee-name">Сотрудник:</label>
+                        <input type="text" id="employee-name" readonly>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vacation-start">Дата начала отпуска:</label>
+                            <input type="date" id="vacation-start">
+                        </div>
+                        <div class="form-group">
+                            <label for="vacation-days">Кол-во дней отпуска:</label>
+                            <input type="number" id="vacation-days" min="1" max="28">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="return-date">Дата выхода на работу:</label>
+                            <input type="date" id="return-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="vacation-days-count">Кол-во дней:</label>
+                            <input type="number" id="vacation-days-count" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="vacation-comment">Комментарий:</label>
+                        <textarea id="vacation-comment"></textarea>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="cancel-vacation">Отменить запись</button>
+                    <button class="btn primary" id="save-vacation">Сохранить</button>
+                    <button class="btn" id="exit-vacation">Закрыть</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="sick-leave">
+            <!-- Содержимое для вкладки "Больничный лист" -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Больничный лист</h2>
+                </div>
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="sick-employee-number">Введите табельный номер сотрудника:</label>
+                        <div class="input-with-button">
+                            <input type="text" id="sick-employee-number">
+                            <button class="btn secondary">Обновить</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sick-employee-name">Сотрудник:</label>
+                        <input type="text" id="sick-employee-name" readonly>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sick-start">Дата начала:</label>
+                            <input type="date" id="sick-start">
+                        </div>
+                        <div class="form-group">
+                            <label for="document-number">№ документа:</label>
+                            <input type="text" id="document-number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sick-end">Дата выхода на работу:</label>
+                            <input type="date" id="sick-end">
+                        </div>
+                        <div class="form-group">
+                            <label for="sick-days-count">Кол-во дней:</label>
+                            <input type="number" id="sick-days-count" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sick-comment">Комментарий:</label>
+                        <textarea id="sick-comment"></textarea>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="cancel-sick">Отменить запись</button>
+                    <button class="btn primary" id="save-sick">Сохранить</button>
+                    <button class="btn" id="exit-sick">Закрыть</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="statistics">
+            <!-- Содержимое для вкладки "Статистика" -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Статистика</h2>
+                </div>
+                <div class="stats-container">
+                    <div class="stats-card">
+                        <h3>Общая статистика</h3>
+                        <div class="stats-item">
+                            <span>Всего сотрудников:</span>
+                            <span id="total-employees">0</span>
+                        </div>
+                        <div class="stats-item">
+                            <span>В отпуске:</span>
+                            <span id="on-vacation">0</span>
+                        </div>
+                        <div class="stats-item">
+                            <span>На больничном:</span>
+                            <span id="on-sick-leave">0</span>
+                        </div>
+                        <div class="stats-item">
+                            <span>Сверхурочные часы (месяц):</span>
+                            <span id="overtime-hours">0</span>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Отпуска по месяцам</h3>
+                        <div class="chart-container">
+                            <canvas id="vacation-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="export-stats">Экспорт статистики</button>
+                    <button class="btn" id="exit-stats">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SuperZov HR. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно для добавления/редактирования сотрудника -->
+    <div class="modal" id="employee-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Добавить сотрудника</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="employee-form">
+                    <div class="form-group">
+                        <label for="emp-name">ФИО:</label>
+                        <input type="text" id="emp-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-number">Табельный номер:</label>
+                        <input type="text" id="emp-number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-position">Должность:</label>
+                        <input type="text" id="emp-position" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-department">Подразделение:</label>
+                        <input type="text" id="emp-department" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-dept-code">Шифр подразделения:</label>
+                        <input type="text" id="emp-dept-code">
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-schedule">График работы:</label>
+                        <select id="emp-schedule">
+                            <option value="5/2">5/2</option>
+                            <option value="2/2">2/2</option>
+                            <option value="сменный">Сменный</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancel-employee">Отмена</button>
+                <button class="btn primary" id="save-employee">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для подтверждения удаления -->
+    <div class="modal" id="confirm-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Удалить запись</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Вы действительно хотите установить статус записи удаленной?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancel-delete">Отмена</button>
+                <button class="btn danger" id="confirm-delete">Да</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>

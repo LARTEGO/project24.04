@@ -1,0 +1,175 @@
+/* Стили для страницы отчетов */
+
+/* Фильтры для отчетов */
+.filter-panel {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filter-panel .form-row {
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.filter-panel .search-group {
+    min-width: 250px;
+}
+
+/* Таблицы отчетов */
+.report-table th, .report-table td {
+    text-align: center;
+}
+
+.report-value {
+    font-weight: bold;
+}
+
+.report-value.positive {
+    color: var(--success-color);
+}
+
+.report-value.negative {
+    color: var(--danger-color);
+}
+
+/* Сводка отчета */
+.report-summary {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.report-summary h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.summary-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.summary-item {
+    flex: 1;
+    min-width: 200px;
+}
+
+.summary-item h4 {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.summary-item .value {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Графики и диаграммы */
+.chart-container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.chart-container h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.chart-wrapper {
+    height: 300px;
+}
+
+/* Заявления от сотрудников */
+.request-status {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.request-status.pending {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.request-status.approved {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.request-status.rejected {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Действия в таблице */
+.action-column {
+    width: 100px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.action-btn:hover {
+    color: var(--primary-color);
+}
+
+.action-btn.approve:hover {
+    color: var(--success-color);
+}
+
+.action-btn.reject:hover {
+    color: var(--danger-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .filter-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-panel .form-row {
+        flex-direction: column;
+    }
+    
+    .filter-panel .search-group {
+        width: 100%;
+    }
+    
+    .summary-items {
+        flex-direction: column;
+    }
+    
+    .chart-wrapper {
+        height: 250px;
+    }
+}

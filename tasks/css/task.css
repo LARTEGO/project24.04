@@ -1,0 +1,366 @@
+/* Стили из superzov/css/task.css (адаптировано из overtime.css) */
+.task-header {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.task-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.status-todo {
+  background-color: #e3f2fd;
+  color: #e53935;
+}
+
+.status-in-progress {
+  background-color: #fff8e1;
+  color: #f57f17;
+}
+
+.status-done {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.task-details {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+}
+
+.task-main {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.task-section {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.task-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.task-description {
+  color: #666;
+  line-height: 1.6;
+}
+
+.task-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.sidebar-card-header {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+}
+
+.sidebar-card-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.sidebar-card-body {
+  padding: 15px;
+}
+
+.task-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meta-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meta-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.meta-value {
+  color: #333;
+}
+
+.task-priority {
+  display: flex;
+  align-items: center;
+}
+
+.priority-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.priority-high {
+  background-color: #e53935; /* Красный цвет SuperZov */
+}
+
+.priority-medium {
+  background-color: #ffa000; /* Оранжевый цвет SuperZov */
+}
+
+.priority-low {
+  background-color: #4bb34b; /* Зеленый цвет SuperZov */
+}
+
+.task-members {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.member-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e53935; /* Цвет аватаров SuperZov */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-name {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.member-role {
+  font-size: 12px;
+  color: #666;
+}
+
+.task-attachments {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.attachment-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.attachment-icon {
+  margin-right: 10px;
+  color: #757575;
+}
+
+.attachment-info {
+  flex: 1;
+}
+
+.attachment-name {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.attachment-meta {
+  font-size: 12px;
+  color: #666;
+}
+
+.attachment-actions {
+  color: #757575;
+}
+
+.task-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 10px;
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #4a76a8; /* Цвет аватаров SuperZov */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.comment-author {
+  font-weight: 500;
+}
+
+.comment-time {
+  font-size: 12px;
+  color: #666;
+}
+
+.comment-text {
+  color: #333;
+  line-height: 1.5;
+}
+
+.comment-actions {
+  margin-top: 5px;
+  display: flex;
+  gap: 15px;
+}
+
+.comment-action {
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+}
+
+.comment-action:hover {
+  color: #4a76a8; /* Цвет при наведении SuperZov */
+}
+
+.comment-form {
+  margin-top: 20px;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.task-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+}
+
+.checklist-checkbox {
+  margin-right: 10px;
+}
+
+.checklist-text {
+  flex: 1;
+}
+
+.checklist-text.completed {
+  text-decoration: line-through;
+  color: #757575;
+}
+
+.task-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.activity-item {
+  display: flex;
+  gap: 10px;
+}
+
+.activity-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #4a76a8; /* Цвет иконок SuperZov */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-text {
+  margin-bottom: 2px;
+}
+
+.activity-time {
+  font-size: 12px;
+  color: #666;
+}

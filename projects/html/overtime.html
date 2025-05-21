@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperZov HR - Сверхурочная работа</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/overtime.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Управление проектами УТТ ДиСТ</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Кадровый учет</a></li>
+                    <li><a href="overtime.html" class="active">Сверхурочная работа</a></li>
+                    <li><a href="reports.html">Отчеты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="overtime-submit">Подача списка</button>
+            <button class="tab-btn" data-tab="overtime-view">Просмотр списка</button>
+            <button class="tab-btn" data-tab="overtime-edit">Редактирование списка</button>
+        </div>
+
+        <div class="tab-content active" id="overtime-submit">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Подача списка на сверхурочную работу</h2>
+                </div>
+                <div class="form-container">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="overtime-date">Выберите дату:</label>
+                            <input type="date" id="overtime-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="overtime-doc-number">№ документа:</label>
+                            <input type="text" id="overtime-doc-number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="overtime-employee-number">Введите табельный номер сотрудника:</label>
+                            <div class="input-with-button">
+                                <input type="text" id="overtime-employee-number">
+                                <button class="btn secondary">Обновить</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="overtime-employee-name">Сотрудник:</label>
+                            <input type="text" id="overtime-employee-name" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="overtime-compensation">Укажите тип компенсации:</label>
+                        <select id="overtime-compensation">
+                            <option value="double">Двойная оплата</option>
+                            <option value="days-off">Дополнительные дни отдыха</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn primary" id="add-to-list">Добавить в список</button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Должность</th>
+                                <th>Подразделение</th>
+                                <th>Обоснование</th>
+                                <th>Сверхурочная работа дня</th>
+                                <th>Сверхурочная работа ночь</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overtime-table-body">
+                            <!-- Данные будут добавлены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="save-overtime">Сохранить</button>
+                    <button class="btn" id="exit-overtime">Закрыть</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="overtime-view">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Просмотр списка на сверхурочную работу</h2>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Должность</th>
+                                <th>Подразделение</th>
+                                <th>Обоснование</th>
+                                <th>Сверхурочная работа дня</th>
+                                <th>Сверхурочная работа ночь</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overtime-view-table-body">
+                            <!-- Данные будут добавлены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn primary" id="print-overtime">Распечатать</button>
+                    <button class="btn" id="exit-overtime-view">Закрыть</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="overtime-edit">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Редактирование списка на сверхурочную работу</h2>
+                </div>
+                <div class="form-container">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-overtime-date">Выберите дату:</label>
+                            <input type="date" id="edit-overtime-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-overtime-doc-number">№ документа:</label>
+                            <input type="text" id="edit-overtime-doc-number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-overtime-employee-number">Введите табельный номер сотрудника:</label>
+                            <div class="input-with-button">
+                                <input type="text" id="edit-overtime-employee-number">
+                                <button class="btn secondary">Обновить</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-overtime-employee-name">Сотрудник:</label>
+                            <input type="text" id="edit-overtime-employee-name" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-overtime-compensation">Укажите тип компенсации:</label>
+                        <select id="edit-overtime-compensation">
+                            <option value="double">Двойная оплата</option>
+                            <option value="days-off">Дополнительные дни отдыха</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn primary" id="add-to-edit-list">Добавить в список</button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ФИО</th>
+                                <th>Должность</th>
+                                <th>Подразделение</th>
+                                <th>Обоснование</th>
+                                <th>Сверхурочная работа дня</th>
+                                <th>Сверхурочная работа ночь</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overtime-edit-table-body">
+                            <!-- Данные будут добавлены через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn secondary" id="save-edited-overtime">Сохранить</button>
+                    <button class="btn" id="exit-overtime-edit">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SuperZov HR. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно для добавления обоснования -->
+    <div class="modal" id="reason-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Добавить обоснование</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="overtime-reason">Обоснование:</label>
+                    <textarea id="overtime-reason" rows="4"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="day-hours">Часы (день):</label>
+                        <input type="number" id="day-hours" min="0" max="12" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="night-hours">Часы (ночь):</label>
+                        <input type="number" id="night-hours" min="0" max="12" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancel-reason">Отмена</button>
+                <button class="btn primary" id="save-reason">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для подтверждения удаления -->
+    <div class="modal" id="confirm-delete-overtime">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Удалить запись</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Вы действительно хотите удалить запись?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancel-delete-overtime">Отмена</button>
+                <button class="btn danger" id="confirm-delete-overtime-btn">Да</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/overtime.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+/* Стили из superzov/css/index.css */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-card-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+}
+
+.project-card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.project-card-body {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.project-card-description {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.project-card-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-card-stats {
+  display: flex;
+  gap: 15px;
+}
+
+.project-card-stat {
+  display: flex;
+  align-items: center;
+  color: #666;
+}
+
+.project-card-stat i {
+  margin-right: 5px;
+  color: #4a76a8; /* Цвет иконок SuperZov */
+}
+
+.project-filters {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-item {
+  padding: 6px 12px;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-item:hover {
+  background-color: #e0e0e0;
+}
+
+.filter-item.active {
+  background-color: #e53935; /* Цвет активного фильтра SuperZov */
+  color: #fff;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  padding-left: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.empty-state-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.empty-state-description {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.create-project-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #e53935; /* Цвет кнопки SuperZov */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+.create-project-btn:hover {
+  background-color: #e53935; /* Темнее при наведении */
+}
+
+.create-project-btn i {
+  font-size: 24px;
+}
+
+.project-status {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 12px;
+}
+
+.status-active {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-completed {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.status-on-hold {
+  background-color: #fff8e1;
+  color: #f57f17;
+}
+
+.status-cancelled {
+  background-color: #ffebee;
+  color: #e53935;
+}
+
+.project-priority {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.priority-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.priority-high {
+  background-color: #e53935; /* Красный цвет SuperZov */
+}
+
+.priority-medium {
+  background-color: #ffa000; /* Оранжевый цвет SuperZov */
+}
+
+.priority-low {
+  background-color: #4bb34b; /* Зеленый цвет SuperZov */
+}
+
+.priority-text {
+  font-size: 12px;
+  color: #666;
+}
+
+.project-deadline {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+.deadline-approaching {
+  color: #ffa000; /* Оранжевый цвет SuperZov */
+}
+
+.deadline-overdue {
+  color: #e53935; /* Красный цвет SuperZov */
+}
+
+.project-members {
+  display: flex;
+  margin-top: 15px;
+}
+
+.member-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e53935; /* Цвет аватаров SuperZov */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: -10px;
+  border: 2px solid #fff;
+}
+
+.member-avatar:last-child {
+  margin-right: 0;
+}
+
+.member-count {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  color: #757575;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  border: 2px solid #fff;
+}
+
+.progress-container {
+  margin-top: 15px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-value {
+  height: 100%;
+  background-color: #4a76a8; /* Цвет прогресса SuperZov */
+  border-radius: 3px;
+}
