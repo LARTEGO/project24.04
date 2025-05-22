@@ -1,5 +1,7 @@
 // Скрипт для главной страницы (кадровый учет)
 
+const employees = require('../../api-part/database/db.sqlite');
+
 document.addEventListener('DOMContentLoaded', function() {
     // Загрузка данных сотрудников
     loadEmployeeData();
@@ -124,14 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Функция загрузки данных сотрудников (имитация)
 function loadEmployeeData() {
     // В реальном приложении здесь был бы запрос к API или базе данных
-    const employees = [
-        { id: 1, name: 'Иванов Иван Иванович', tabNumber: '001', position: 'Инженер', department: 'ИТ отдел', deptCode: 'IT-01', schedule: '5/2', status: 'Активен' },
-        { id: 2, name: 'Петров Петр Петрович', tabNumber: '002', position: 'Менеджер', department: 'Отдел продаж', deptCode: 'S-01', schedule: '5/2', status: 'Активен' },
-        { id: 3, name: 'Сидорова Анна Владимировна', tabNumber: '003', position: 'Бухгалтер', department: 'Бухгалтерия', deptCode: 'F-01', schedule: '5/2', status: 'В отпуске' },
-        { id: 4, name: 'Козлов Алексей Сергеевич', tabNumber: '004', position: 'Водитель', department: 'Транспортный отдел', deptCode: 'T-01', schedule: '2/2', status: 'Активен' },
-        { id: 5, name: 'Новикова Елена Дмитриевна', tabNumber: '005', position: 'HR-специалист', department: 'Отдел кадров', deptCode: 'HR-01', schedule: '5/2', status: 'Активен' }
-    ];
-    
     const tableBody = document.getElementById('employees-table-body');
     if (tableBody) {
         tableBody.innerHTML = '';
@@ -235,25 +229,22 @@ function addActionButtonHandlers() {
 
 // Функция для редактирования сотрудника
 function editEmployee(id) {
-    // В реальном приложении здесь был бы запрос к API или базе данных для получения данных сотрудника
-    // Имитация получения данных
-    const employee = {
-        id: id,
-        name: 'Иванов Иван Иванович',
-        tabNumber: '001',
-        position: 'Инженер',
-        department: 'ИТ отдел',
-        deptCode: 'IT-01',
-        schedule: '5/2'
-    };
     
     // Заполняем форму данными
-    document.getElementById('emp-name').value = employee.name;
-    document.getElementById('emp-number').value = employee.tabNumber;
-    document.getElementById('emp-position').value = employee.position;
-    document.getElementById('emp-department').value = employee.department;
-    document.getElementById('emp-dept-code').value = employee.deptCode;
-    document.getElementById('emp-schedule').value = employee.schedule;
+    const emp_name = document.getElementById('emp-name').value;
+    const emp_number = document.getElementById('emp-number').value;
+    const emp_position = document.getElementById('emp-position').value;
+    const emp_department = document.getElementById('emp-department').value;
+    const emp_dept_code = document.getElementById('emp-dept-code').value;
+    const emp_schedule = document.getElementById('emp-schedule').value;
+
+    //1* - дописать
+    // Запрос
+    const edit_emp = 1* fetch('/api/api-part/employee', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ emp_name, emp_number, emp_position, emp_department, emp_dept_code, emp_schedule })
+    });
     
     // Меняем заголовок модального окна
     document.getElementById('modal-title').textContent = 'Редактировать сотрудника';
@@ -264,16 +255,20 @@ function editEmployee(id) {
 
 // Функция для сохранения сотрудника
 function saveEmployee() {
-    // В реальном приложении здесь был бы запрос к API или базе данных для сохранения данных
     // Получаем данные из формы
-    const employee = {
-        name: document.getElementById('emp-name').value,
-        tabNumber: document.getElementById('emp-number').value,
-        position: document.getElementById('emp-position').value,
-        department: document.getElementById('emp-department').value,
-        deptCode: document.getElementById('emp-dept-code').value,
-        schedule: document.getElementById('emp-schedule').value
-    };
+    const emp_name = document.getElementById('emp-name').value;
+    const emp_number = document.getElementById('emp-number').value;
+    const emp_position = document.getElementById('emp-position').value;
+    const emp_department = document.getElementById('emp-department').value;
+    const emp_dept_code = document.getElementById('emp-dept-code').value;
+    const emp_schedule = document.getElementById('emp-schedule').value;
+
+    // Запрос
+    const response = fetch('/api/api-part/employee', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ emp_name, emp_number, emp_position, emp_department, emp_dept_code, emp_schedule }),
+    });
     
     console.log('Сохранение сотрудника:', employee);
     // В реальном приложении здесь был бы код для отправки данных на сервер
