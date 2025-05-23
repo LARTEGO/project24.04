@@ -1,7 +1,5 @@
 // Скрипт для главной страницы (кадровый учет)
 
-const employees = require('../../api-part/database/db.sqlite');
-
 document.addEventListener('DOMContentLoaded', function() {
     // Загрузка данных сотрудников
     loadEmployeeData();
