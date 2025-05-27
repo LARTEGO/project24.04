@@ -229,19 +229,19 @@ function addActionButtonHandlers() {
 function editEmployee(id) {
     
     // Заполняем форму данными
-    const emp_name = document.getElementById('emp-name').value;
-    const emp_number = document.getElementById('emp-number').value;
-    const emp_position = document.getElementById('emp-position').value;
-    const emp_department = document.getElementById('emp-department').value;
-    const emp_dept_code = document.getElementById('emp-dept-code').value;
-    const emp_schedule = document.getElementById('emp-schedule').value;
+    const name = document.getElementById('emp-name').value;
+    const tabNumber = document.getElementById('emp-number').value;
+    const position = document.getElementById('emp-position').value;
+    const epartment = document.getElementById('emp-department').value;
+    const deptCode = document.getElementById('emp-dept-code').value;
+    const schedule = document.getElementById('emp-schedule').value;
 
     //1* - дописать
     // Запрос
     const edit_emp = 1* fetch('/api/api-part/employee', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ emp_name, emp_number, emp_position, emp_department, emp_dept_code, emp_schedule })
+        body: JSON.stringify({ name, tabNumber, position, department, deptCode, schedule })
     });
     
     // Меняем заголовок модального окна
