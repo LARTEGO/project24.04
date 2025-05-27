@@ -254,18 +254,18 @@ function editEmployee(id) {
 // Функция для сохранения сотрудника
 function saveEmployee() {
     // Получаем данные из формы
-    const emp_name = document.getElementById('emp-name').value;
-    const emp_number = document.getElementById('emp-number').value;
-    const emp_position = document.getElementById('emp-position').value;
-    const emp_department = document.getElementById('emp-department').value;
-    const emp_dept_code = document.getElementById('emp-dept-code').value;
-    const emp_schedule = document.getElementById('emp-schedule').value;
+    const name = document.getElementById('emp-name').value;
+    const tabNumber = document.getElementById('emp-number').value;
+    const position = document.getElementById('emp-position').value;
+    const department = document.getElementById('emp-department').value;
+    const deptCode = document.getElementById('emp-dept-code').value;
+    const schedule = document.getElementById('emp-schedule').value;
 
     // Запрос
-    const response = fetch('/api/api-part/employee', {
+    const response = fetch('/api/employee', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ emp_name, emp_number, emp_position, emp_department, emp_dept_code, emp_schedule }),
+        body: JSON.stringify({ name, tabNumber, position, department, deptCode, schedule }),
     });
     
     console.log('Сохранение сотрудника:', employee);
