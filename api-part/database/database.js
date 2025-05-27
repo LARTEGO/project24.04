@@ -12,9 +12,10 @@ db.serialize(() => {
             deptCode TEXT NOT NULL,
             schedule TEXT NOT NULL
         )
-        `);
+    `);
+
     db.run(`
-        CREATE TABLE IF EXISTS timesheetData (
+        CREATE TABLE IF NOT EXISTS timesheetData (
             id INTEGER,
             name TEXT NOT NULL,
             tabNumber TEXT NOT NULL,
@@ -25,8 +26,9 @@ db.serialize(() => {
             docNumber TEXT NOT NULL,
             comment TEXT
         )
-        `)
-        db.run(`
+    `);
+
+    db.run(`
         CREATE TABLE IF NOT EXISTS table_chk (
             c_id INTEGER PRIMARY KEY AUTOINCREMENT,
             cName TEXT NOT NULL,
@@ -34,12 +36,13 @@ db.serialize(() => {
             cStatus TEXT NOT NULL, 
             cDate INTEGER,
             ovt_work INTEGER,
-            ovt-if_work INTEGER,
+            ovt_if_work INTEGER,
             tf_hours INTEGER,
             fond_hours INTEGER,
-            cReason TEXT NOT NULL,
+            cReason TEXT NOT NULL
         )
-        `)
+    `);
+
     db.run(`
         CREATE TABLE IF NOT EXISTS statement (
             s_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -51,33 +54,34 @@ db.serialize(() => {
             time INTEGER,
             sReason TEXT
         )
-        `)
+    `);
+
     db.run(`
         CREATE TABLE IF NOT EXISTS vacation (
-            v_id INTEGER PRIMARY KEY AUNTOINCREMENT,
+            v_id INTEGER PRIMARY KEY AUTOINCREMENT,
             vName TEXT NOT NULL,
             vNum INTEGER,
-            vStart-t INTEGER,
-            vEnd-t INTEGER,
+            vStart_t INTEGER,
+            vEnd_t INTEGER,
             vDays INTEGER,
             add_days INTEGER,
             vCom TEXT
         )
-        `)
+    `);
+
     db.run(`
         CREATE TABLE IF NOT EXISTS ill_list (
             i_id INTEGER PRIMARY KEY AUTOINCREMENT,
             iName TEXT NOT NULL,
             iNum INTEGER,
-            iStart-t INTEGER,
-            iEnd-t INTEGER,
-            iEnd-t INTEGER,
+            iStart_t INTEGER,
+            iEnd_t INTEGER,
             iDays INTEGER,
             document TEXT NOT NULL,
             iCom TEXT
-
         )
-        `)
+    `);
+
     db.run(`
         CREATE TABLE IF NOT EXISTS task (
             t_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -93,7 +97,8 @@ db.serialize(() => {
             term TEXT,
             owner TEXT
         )
-        `)
+    `);
+
     db.run(`
         CREATE TABLE IF NOT EXISTS t_changes (
             w_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -103,5 +108,5 @@ db.serialize(() => {
             hData INTEGER,
             hHOURS INTEGER
         )
-        `)
+    `);
 });
